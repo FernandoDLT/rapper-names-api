@@ -1,4 +1,4 @@
-const { request, response } = require('express')
+const { response } = require('express')
 const express = require('express')
 const app = express()
 const PORT = 8000
@@ -14,7 +14,7 @@ const rappers = {
         'birthName': 'Marshall Bruce Mathers III',
         'birthLocation': 'Detroit, Michigan, USA'
     },
-    'dr.dre': {
+    'dr. dre': {
         'age': 57,
         'birthName': 'Andre Romelle Young',
         'birthLocation': 'Compton, California, USA'
@@ -31,7 +31,7 @@ app.get('/', (request, response)=>{
 })
 
 app.get('/api/:name', (request, response)=>{
-    const rapperName = request.params.name.toLocaleLowerCase()
+    const rapperName = request.params.name.toLowerCase()
     if( rappers[rapperName] ){
         response.json(rappers[rapperName])
     }else{
